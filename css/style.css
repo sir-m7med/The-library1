@@ -1,0 +1,183 @@
+/* Reset */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background: #ffffff;
+  color: #333;
+}
+
+header {
+  background: #b25d03;
+  color: white;
+  padding: 1rem;
+}
+
+header h1 { margin-bottom: 0.5rem; }
+
+nav ul {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav a:hover { text-decoration: underline; }
+
+main { padding: 2rem; }
+
+footer {
+  text-align: center;
+  background: #913f08;
+  color: white;
+  padding: 1rem;
+  margin-top: 2rem;
+}
+
+/* Book Grid */
+.book-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.book-grid figure {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  
+  transition: transform 0.2s;
+}
+
+.book-grid img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  display: block;
+}
+
+.book-grid figcaption {
+  background: #f0f0f0;
+  padding: 0.7rem;
+  text-align: center;
+  font-weight: bold;
+  color: #333;
+  transition: all 0.3s ease;
+}
+
+.book-grid figure:hover {
+  transform: translateY(-10px);
+}
+
+.book-grid figure:hover figcaption {
+  background: #e86100;
+  color: #fff;
+  text-decoration: underline;
+}
+
+/* ===========================
+   Responsive helpers & layout
+   Paste at the END of style.css
+   =========================== */
+
+/* container center and max width for better reading on large screens */
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* Make forms mobile-friendly (login/signup/contact) */
+form label {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-weight: 600;
+}
+form input,
+form textarea,
+form button {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: 0.6rem;
+  margin-bottom: 0.75rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+/* GENERAL NAV ADJUSTMENTS: allow wrapping on smaller screens */
+nav ul {
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  padding-left: 0;
+  margin-top: 0.6rem;
+}
+
+/* BOOK GRID: slightly smaller gaps for small screens, responsive columns */
+.book-grid {
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+/* --- MEDIA QUERIES --- */
+
+/* Tablets and small laptops */
+@media (max-width: 992px) {
+  header h1 { font-size: 1.3rem; }
+  nav ul { justify-content: center; gap: 0.5rem; }
+  .book-grid { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
+  .book-grid img { height: 300px; } /* taller for book cover look */
+}
+
+/* Phones / small tablets */
+@media (max-width: 768px) {
+  /* stack nav vertically */
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+  header {
+    text-align: center;
+    padding: 0.8rem;
+  }
+  header h1 { margin-bottom: 0.2rem; font-size: 1.1rem; }
+
+  /* books: 2 cards per row on most phones in landscape, 1 in portrait */
+  .book-grid {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 0.8rem;
+  }
+
+  .book-grid img {
+    height: 260px;  /* adjust if you want taller/shorter covers */
+  }
+
+  .book-grid figcaption {
+    padding: 0.5rem;
+    font-size: 0.95rem;
+  }
+}
+
+/* Narrow phones / portrait */
+@media (max-width: 480px) {
+  nav ul { gap: 0.4rem; }
+  .book-grid {
+    grid-template-columns: 1fr;  /* one book per row */
+  }
+  .book-grid img {
+    height: 200px; /* smaller to fit narrow screens */
+  }
+  .book-grid figcaption {
+    font-size: 0.95rem;
+  }
+  main { padding: 1rem; }
+  footer { padding: 0.8rem; font-size: 0.9rem; }
+}
